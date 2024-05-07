@@ -1,0 +1,48 @@
+﻿@model IEnumerable<WebApp.Models.CustomerViewModel>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th></th>
+    </tr>
+    @foreach(var customer in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => customer.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => customer.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => customer.EmailAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => customer.PhoneNumber)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = customer.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = customer.Id })
+            </td>
+        </tr>
+    }
+    <tr>
+        <td colspan="6">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+</table>
